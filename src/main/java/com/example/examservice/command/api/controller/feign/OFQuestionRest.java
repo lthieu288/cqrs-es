@@ -9,7 +9,7 @@ import java.util.Map;
 
 @FeignClient(value = "test-consumer",
 //        url = "http://localhost:8080"
-        url = "http://18.139.83.149:8080"
+        url = "https://da-cnpm-nhom-3-backend.vercel.app"
 )
 public interface OFQuestionRest {
 
