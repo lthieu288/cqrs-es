@@ -6,7 +6,6 @@ import com.example.examservice.command.api.commands.UpdateCollectionCommand;
 import com.example.examservice.command.api.dto.request.CreateCollectionRequest;
 import com.example.examservice.command.api.dto.request.DeleteCollectionRequest;
 import com.example.examservice.command.api.dto.request.UpdateCollectionRequest;
-import com.example.examservice.entity.Collection;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

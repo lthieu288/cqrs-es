@@ -2,7 +2,6 @@ package com.example.examservice.command.api.events;
 
 import com.example.examservice.entity.Collection;
 import com.example.examservice.repository.CollectionRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.messaging.interceptors.ExceptionHandler;

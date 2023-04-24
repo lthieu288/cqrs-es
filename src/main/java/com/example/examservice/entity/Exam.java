@@ -26,7 +26,7 @@ public class Exam {
     private Long numComments;
 
     @Column(name = "collection_id")
-    private Long collectionId;
+    private String collectionId;
 
     @Column(name = "media_link")
     private String mediaLink;

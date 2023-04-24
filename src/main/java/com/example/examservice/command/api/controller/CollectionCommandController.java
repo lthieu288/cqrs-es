@@ -4,7 +4,6 @@ import com.example.examservice.command.api.dto.request.CreateCollectionRequest;
 import com.example.examservice.command.api.dto.request.DeleteCollectionRequest;
 import com.example.examservice.command.api.dto.request.UpdateCollectionRequest;
 import com.example.examservice.command.api.service.CollectionCommandService;
-import com.example.examservice.entity.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
