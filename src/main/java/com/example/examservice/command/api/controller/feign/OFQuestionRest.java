@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.Map;
 
 @FeignClient(value = "test-consumer",
-        url = "http://localhost:8080")
+//        url = "http://localhost:8080"
+        url = "http://18.139.83.149:8080"
+)
 public interface OFQuestionRest {
 
     @PostMapping(value = "/exam/questionCrt", produces = MediaType.APPLICATION_JSON_VALUE)
