@@ -55,7 +55,8 @@ public class ExamQueryController {
             return ResponseUtils.error(HttpStatus.NOT_FOUND, "Not found exam");
         }
 
-        Object result = ofQuestionRest.getDetailExam(id);
+        Map<String, Object> result = ofQuestionRest.getDetailExam(id);
+        result.put("media", exam.getMediaLink());
         return ResponseUtils.success(result);
     }
 }

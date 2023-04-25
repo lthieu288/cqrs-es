@@ -17,7 +17,7 @@ public interface OFQuestionRest {
     Object postExam(Map<String, Object> map);
 
     @PostMapping(value = "/exam/detail", produces = MediaType.APPLICATION_JSON_VALUE)
-    Object getDetailExam(String id);
+    Map<String, Object> getDetailExam(String id);
 
     @PostMapping(value = "/exam/submit", produces = MediaType.APPLICATION_JSON_VALUE)
     Object submitAnswer(Map<String, Object> map);
