@@ -1,25 +1,31 @@
 package com.example.examservice;
 
 import com.example.examservice.command.api.controller.feign.OFQuestionRest;
+import com.example.examservice.command.api.dto.response.Response;
 import com.example.examservice.entity.Exam;
 import com.example.examservice.query.api.controller.ExamQueryController;
 import com.example.examservice.query.api.queries.GetExamsQuery;
 import com.example.examservice.repository.ExamRepository;
+import com.example.examservice.utils.ResponseUtils;
 import org.axonframework.messaging.responsetypes.ResponseType;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import java.util.List;
+
+
+import com.google.gson.Gson;
 public class ExamQueryControllerTest {
 
     private  ExamRepository examRepo;
@@ -66,11 +72,13 @@ public class ExamQueryControllerTest {
         assertThat(exams.isEmpty(),is(false));
         ResponseEntity<?> responseEntity = examQueryController.getTopExams();
         assertThat(responseEntity.getStatusCode(),is(HttpStatus.OK));
-//        System.out.print(responseEntity.getBody());
-
-//        assertThat(responseEntity.getBody(),is(exams));
-
-
+        assertThat(responseEntity.getBody(),is(Response.success(exams)));
     }
 
+    @Test
+    void getDetailExam_FindIdExam_ResponseUtilsError() {
+        when(examRepo.findById("1")).thenReturn(Optional.empty());
+        assertThat(ResponseUtils.error(HttpStatus.NOT_FOUND, "Not found exam"),is(examQueryController.getDetailExam("1")));
+    }
 }
+
