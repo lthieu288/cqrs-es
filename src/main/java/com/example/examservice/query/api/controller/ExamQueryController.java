@@ -27,14 +27,21 @@ import java.util.Map;
 @RequestMapping("/exam")
 public class ExamQueryController {
 
-    @Autowired
-    private QueryGateway queryGateway;
+    private final  QueryGateway queryGateway;
 
-    @Autowired
-    private OFQuestionRest ofQuestionRest;
+    private final OFQuestionRest ofQuestionRest;
 
-    @Autowired
-    private ExamRepository examRepo;
+    private final ExamRepository examRepo;
+
+    public ExamQueryController(QueryGateway queryGateway,
+                               OFQuestionRest ofQuestionRest,
+                               ExamRepository examRepo) {
+
+        this.queryGateway = queryGateway;
+        this.ofQuestionRest = ofQuestionRest;
+        this.examRepo = examRepo;
+    }
+
 
     @GetMapping("/top")
     public ResponseEntity<?> getTopExams (){
