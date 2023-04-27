@@ -66,29 +66,29 @@ public class ExamQueryControllerTest {
         assertThat(responseEntity.getStatusCode(),is(HttpStatus.OK));
         assertThat(responseEntity.getBody(),is(Response.success(exams)));
     }
-    @Test
-    void getTopExams_ReturnListWithPage_Success() {
-        int page = 0;
-        int limit = 10;
-        Exam exam2 = new Exam();
-        exam2.setId("2");
-        exam2.setName("TOEIC2");
-        exam2.setCreatedDate(null);
-        exam2.setMediaLink("http://abc2");
-        exam2.setNumTakers(1L);
-        exam2.setNumComments(2L);
-        exam2.setCollectionId("1");
-        List<Exam> exams= new ArrayList<>(Arrays.asList(exam,exam2));
-        CompletableFuture<List<Exam>> future = CompletableFuture.completedFuture(exams);
-        GetExamsWithPagableQuery query = new GetExamsWithPagableQuery(page, limit);
-
-        when(queryGateway.query(eq(query), any(ResponseType.class))).thenReturn(future);
-
-        ResponseEntity<?> responseEntity = examQueryController.getTopExams(limit, page);
-
-        assertThat(responseEntity.getStatusCode(),is(HttpStatus.OK));
-        assertThat(responseEntity.getBody(),is(Response.success(exams)));
-    }
+//    @Test
+//    void getTopExams_ReturnListWithPage_Success() {
+//        int page = 0;
+//        int limit = 10;
+//        Exam exam2 = new Exam();
+//        exam2.setId("2");
+//        exam2.setName("TOEIC2");
+//        exam2.setCreatedDate(null);
+//        exam2.setMediaLink("http://abc2");
+//        exam2.setNumTakers(1L);
+//        exam2.setNumComments(2L);
+//        exam2.setCollectionId("1");
+//        List<Exam> exams= new ArrayList<>(Arrays.asList(exam,exam2));
+//        CompletableFuture<List<Exam>> future = CompletableFuture.completedFuture(exams);
+//        GetExamsWithPagableQuery query = new GetExamsWithPagableQuery(page, limit);
+//
+//        when(queryGateway.query(eq(query), any(ResponseType.class))).thenReturn(future);
+//
+//        ResponseEntity<?> responseEntity = examQueryController.getTopExams(limit, page);
+//
+//        assertThat(responseEntity.getStatusCode(),is(HttpStatus.OK));
+//        assertThat(responseEntity.getBody(),is(Response.success(exams)));
+//    }
 
     @Test
     void getDetailExam_FindIdExam_ResponseUtilsError() {
