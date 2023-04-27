@@ -39,12 +39,11 @@ public class ExamProjection {
     }
 
     @QueryHandler
-    public List<Exam> handle(GetExamsWithPagableQuery getExamsQuery){
+    public Page<Exam> handle(GetExamsWithPagableQuery getExamsQuery){
         //Get exam
         Pageable sortByDate = PageRequest.of(getExamsQuery.getPage(), getExamsQuery.getSize(), Sort.by("createdDate").descending());
         Page<Exam> examPage = examRepository.findAll(sortByDate);
-        List<Exam> examResponseList = new ArrayList<>(examPage.getContent());
 
-        return examResponseList;
+        return examPage;
     }
 }
